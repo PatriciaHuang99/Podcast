@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Creator;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,11 @@ class PodcastFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'creator_id' => Creator::factory(),
+            'title' => fake()->sentence(3),
+            'description' => fake()->randomElement(['Technology', 'Art', 'News']),
+            'audio_file_path' => fake()->url(),
+            'episode' => fake()->numberBetween(1, 100),
         ];
     }
 }
