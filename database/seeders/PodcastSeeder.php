@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Podcast;
+use App\Models\Tag;
+use Illuminate\Database\Eloquent\Factories\Sequence;
 use Illuminate\Database\Seeder;
 
 class PodcastSeeder extends Seeder
@@ -12,6 +14,11 @@ class PodcastSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        $tags = Tag::factory(3)->create();
+        Podcast::factory(25)->hasAttached($tags)->create(new Sequence([
+            'popular' => false,
+        ], [
+            'popular' => true,
+        ]));
     }
 }

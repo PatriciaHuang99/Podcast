@@ -19,10 +19,11 @@ class PodcastFactory extends Factory
     {
         return [
             'creator_id' => Creator::factory(),
-            'title' => fake()->sentence(3),
+            'title' => fake()->catchPhrase(),
             'description' => fake()->randomElement(['Technology', 'Art', 'News']),
             'audio_file_path' => fake()->url(),
             'episode' => fake()->numberBetween(1, 100),
+            'popular' => false,
         ];
     }
 }

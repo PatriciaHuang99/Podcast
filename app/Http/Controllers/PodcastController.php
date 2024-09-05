@@ -14,8 +14,12 @@ class PodcastController extends Controller
      */
     public function index()
     {
+        // Group by popularity, second group is for popular podcasts
+        $podcasts = Podcast::all()->groupBy('popular');
+
         return view('podcasts.index', [
-            'podcasts' => Podcast::all(),
+            'popularPodcasts' => $podcasts[1],
+            'podcasts' => $podcasts[0],
             'tags' => Tag::all(),
         ]);
     }

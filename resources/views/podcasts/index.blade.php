@@ -7,11 +7,11 @@
             </form>
         </section>
         <section class="pt-10">
-            <x-section-heading>Jobs</x-section-heading>
+            <x-section-heading>Popular podcasts</x-section-heading>
             
     
             <div class="grid lg:grid-cols-3 gap-8 mt-6">
-                @foreach ($podcasts as $podcast)
+                @foreach ($popularPodcasts as $podcast)
                     <x-podcast-card :$podcast />
                 @endforeach
             </div>
@@ -28,7 +28,7 @@
         <section>
             <x-section-heading>Recent Podcast</x-section-heading>
             <div class="mt-6 space-y-6">
-                @foreach ($podcasts as $podcst)
+                @foreach ($podcasts as $podcast)
                     <x-podcast-card-wide :$podcast />
                 @endforeach
             </div>

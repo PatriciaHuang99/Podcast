@@ -1,15 +1,15 @@
 @props(['podcast'])
 
 <x-panel class="flex flex-col text-center">
-    <div class="self-start text-sm">Laracasts</div>
+    <div class="self-start text-sm">{{ $podcast->creator->name }}</div>
     <div class="py-8">
-        <h3 class="font-bold group-hover:text-blue-600 text-xl transition-colors duration-300">Video Producer</h3>
-        <p class="text-sm mt-4">Full time - From $60,000</p>
+        <h3 class="font-bold group-hover:text-blue-600 text-xl transition-colors duration-300">{{ $podcast->title }}</h3>
+        <p class="text-sm mt-4">{{ $podcast->audio_file_path}}</p>
     </div>
     <div class="flex justify-between items-center mt-auto">
         <div>
             @foreach ($podcast->tags as $tag)
-                <x-tag :$tag size="small"> Art </x-tag>
+                <x-tag :$tag size="small" />
             @endforeach
         </div>
 
