@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePodcastRequest;
 use App\Http\Requests\UpdatePodcastRequest;
 use App\Models\Podcast;
+use App\Models\Tag;
 
 class PodcastController extends Controller
 {
@@ -13,7 +14,10 @@ class PodcastController extends Controller
      */
     public function index()
     {
-        //
+        return view('podcasts.index', [
+            'podcasts' => Podcast::all(),
+            'tags' => Tag::all(),
+        ]);
     }
 
     /**

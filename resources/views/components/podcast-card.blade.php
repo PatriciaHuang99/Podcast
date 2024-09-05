@@ -1,3 +1,5 @@
+@props(['podcast'])
+
 <x-panel class="flex flex-col text-center">
     <div class="self-start text-sm">Laracasts</div>
     <div class="py-8">
@@ -6,9 +8,9 @@
     </div>
     <div class="flex justify-between items-center mt-auto">
         <div>
-            <x-tag size="small">Tech</x-tag>
-            <x-tag size="small">Art</x-tag>
-            <x-tag size="small">News</x-tag>
+            @foreach ($podcast->tags as $tag)
+                <x-tag :$tag size="small"> Art </x-tag>
+            @endforeach
         </div>
 
         <x-creator-logo :width="42"></x-creator-logo>

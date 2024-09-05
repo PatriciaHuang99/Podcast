@@ -11,27 +11,26 @@
             
     
             <div class="grid lg:grid-cols-3 gap-8 mt-6">
-                <x-podcast-card/>
-                <x-podcast-card/>
-                <x-podcast-card/>
+                @foreach ($podcasts as $podcast)
+                    <x-podcast-card :$podcast />
+                @endforeach
             </div>
         </section>
     
         <section>
             <x-section-heading>Tags</x-section-heading>
             <div class="mt-6 space-x-1">
-                <x-tag>Tag</x-tag>
-                <x-tag>Tag</x-tag>
-                <x-tag>Tag</x-tag>
-                <x-tag>Tag</x-tag>
+                @foreach ($tags as $tag)
+                    <x-tag :$tag />
+                @endforeach
             </div>
         </section>
         <section>
             <x-section-heading>Recent Podcast</x-section-heading>
             <div class="mt-6 space-y-6">
-                <x-podcast-card-wide/>
-                <x-podcast-card-wide/>
-                <x-podcast-card-wide/>
+                @foreach ($podcasts as $podcst)
+                    <x-podcast-card-wide :$podcast />
+                @endforeach
             </div>
             
         </section>

@@ -1,3 +1,5 @@
+@props(['podcast'])
+
 <x-panel class="flex gap-x-6">
     <div>
         <x-creator-logo></x-creator-logo>
@@ -11,9 +13,9 @@
 
     <div>
         <div>
-            <x-tag size="small">Tech</x-tag>
-            <x-tag size="small">Art</x-tag>
-            <x-tag size="small">News</x-tag>
+            @foreach ($podcast->tags as $tag)
+                <x-tag :$tag> Art </x-tag>
+            @endforeach
         </div>
     </div>
     
