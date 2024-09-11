@@ -1,4 +1,3 @@
-@props(['width' => 90])
+@props(['creator', 'width' => 90])
 
-
-<img src="http://picsum.photos/seed/{{ rand(1, 100000) }}/{{ $width }}" alt="" class="rounded-xl">
+<img src="{{ asset($creator->avatar) }}" alt="" class="rounded-xl" width="{{ $width }}">

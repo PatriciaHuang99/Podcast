@@ -2,14 +2,17 @@
 
 <x-panel class="flex gap-x-6">
     <div>
-        <x-creator-logo></x-creator-logo>
+        <x-creator-logo :creator="$podcast->creator"></x-creator-logo>
     </div>
     
     <div class="flex-1 flex flex-col">
         <a class="self-start text-sm text-gray-400">{{ $podcast->creator->name }}</a>
-        <a href="{{ $podcast->audio_file_path }}">
-            <h3 class="font-bold text-xl mt-3 group-hover:text-blue-600 transition-colors duration-300">{{ $podcast->title }}</h3>
-        </a>
+        <h3 class="font-bold text-xl mt-3 group-hover:text-blue-600 transition-colors duration-300">
+            <a href="{{ $podcast->audio_file_path }}" target="_blank">
+                {{ $podcast->title }}
+            </a>
+        </h3>
+       
         <a class="text-sm text-gray-400 mt-auto" href="{{ $podcast->audio_file_path }}">Episode: {{$podcast->episode}}</a>
     </div>
 

@@ -17,7 +17,8 @@ class PodcastController extends Controller
     public function index()
     {
         // Group by popularity, second group is for popular podcasts
-        $podcasts = Podcast::latest()->get()->groupBy('popular');
+        // avoid n+1 issue
+        $podcasts = Podcast::latest()->with(['creator', 'tags'])->get()->groupBy('popular');
 
         return view('podcasts.index', [
             'popularPodcasts' => $podcasts[1],

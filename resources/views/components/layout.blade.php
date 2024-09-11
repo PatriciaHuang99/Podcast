@@ -25,8 +25,13 @@
             </div>
 
             @auth
-                <div class="space-x-6 font-bold">
-                    <a href="/podcasts/create">post a podcast</a>
+                <div class="space-x-6 font-bold flex">
+                    <a href="/podcasts/create">Post a Podcast</a>
+                    <form method="POST" action="/logout">
+                        @csrf
+                        @method('DELETE')
+                        <button>Log Out</button>
+                    </form>
                 </div>
             @endauth
 
