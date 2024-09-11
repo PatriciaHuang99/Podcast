@@ -3,8 +3,10 @@
 <x-panel class="flex flex-col text-center">
     <div class="self-start text-sm">{{ $podcast->creator->name }}</div>
     <div class="py-8">
-        <h3 class="font-bold group-hover:text-blue-600 text-xl transition-colors duration-300">{{ $podcast->title }}</h3>
-        <p class="text-sm mt-4">{{ $podcast->audio_file_path}}</p>
+        <a href="{{ $podcast->audio_file_path}}">
+            <h3 class="font-bold group-hover:text-blue-600 text-xl transition-colors duration-300">{{ $podcast->title }}</h3>
+        </a>
+        <a class="text-sm text-gray-400 mt-6 mt-auto" href="{{ $podcast->audio_file_path}}">Episode: {{$podcast->episode}}</a>
     </div>
     <div class="flex justify-between items-center mt-auto">
         <div>

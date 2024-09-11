@@ -22,7 +22,7 @@ class PodcastFactory extends Factory
             'title' => fake()->catchPhrase(),
             'description' => fake()->randomElement(['Technology', 'Art', 'News']),
             'audio_file_path' => fake()->url(),
-            'episode' => fake()->numberBetween(1, 100),
+            'episode' => (string) fake()->numberBetween(1, 100),
             'popular' => false,
         ];
     }

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('description');
             $table->string('audio_file_path');
-            $table->integer('episode')->default(1);
+            $table->string('episode')->default('1');
             $table->boolean('popular')->default(false);
             $table->timestamps();
         });

@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StorePodcastRequest;
 use App\Http\Requests\UpdatePodcastRequest;
 use App\Models\Podcast;
 use App\Models\Tag;
+use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
 
 class PodcastController extends Controller
 {
@@ -15,7 +17,7 @@ class PodcastController extends Controller
     public function index()
     {
         // Group by popularity, second group is for popular podcasts
-        $podcasts = Podcast::all()->groupBy('popular');
+        $podcasts = Podcast::latest()->get()->groupBy('popular');
 
         return view('podcasts.index', [
             'popularPodcasts' => $podcasts[1],
@@ -29,15 +31,32 @@ class PodcastController extends Controller
      */
     public function create()
     {
-        //
+        return view('podcasts.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorePodcastRequest $request)
+    public function store(Request $request)
     {
-        //
+        $attributes = $request->validate([
+            'title' => ['required'],
+            'description' => ['required'],
+            'episode' => ['required'],
+            'audio_file_path' => ['required', 'url'],
+            'tags' => ['nullable']
+        ]);
+
+        $podcast = Auth::user()->creator->podcasts()->create(Arr::except($attributes, 'tags'));
+
+        if ($attributes['tags'] ?? false) {
+            foreach (explode(',', $attributes['tags']) as $tag) {
+                $podcast->tag($tag);
+            }
+        }
+
+        return redirect('/');
+
     }
 
     /**

@@ -2,9 +2,12 @@
     <div class="space-y-10">
         <section class="text-center pt-6">
             <h1 class="font-bold text-4xl">Let's listen to podcast!</h1>
-            <form action="" class="mt-6">
+            {{-- <form action="" class="mt-6">
                 <input type="text" placeholder="Interests topics: latest news..." class="rounded-xl bg-white/5 border border-white/10 px-5 py-4 w-full max-w-xl">
-            </form>
+            </form> --}}
+            <x-forms.form action='/search' class="mt-6">
+                <x-forms.input name='q' :label='false' placeholder='health ...'></x-forms.input>
+            </x-forms.form>
         </section>
         <section class="pt-10">
             <x-section-heading>Popular podcasts</x-section-heading>
