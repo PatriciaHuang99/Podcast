@@ -17,13 +17,16 @@ class PodcastFactory extends Factory
      */
     public function definition(): array
     {
+        // $listeningCount = fake()->numberBetween(0, 5000);
+        $listeningCount = 0;
+
         return [
             'creator_id' => Creator::factory(),
             'title' => fake()->catchPhrase(),
             'description' => fake()->randomElement(['Technology', 'Art', 'News']),
             'audio_file_path' => fake()->url(),
             'episode' => (string) fake()->numberBetween(1, 100),
-            'popular' => false,
+            'listening_count_more_than_1000' => false,
         ];
     }
 }

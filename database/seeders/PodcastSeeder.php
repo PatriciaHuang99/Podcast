@@ -15,10 +15,11 @@ class PodcastSeeder extends Seeder
     public function run(): void
     {
         $tags = Tag::factory(3)->create();
-        Podcast::factory(25)->hasAttached($tags)->create(new Sequence([
-            'popular' => false,
-        ], [
-            'popular' => true,
-        ]));
+        Podcast::factory(4)->hasAttached($tags)->create();
+        
+        Podcast::factory(25)->hasAttached($tags)->create(new Sequence(
+        ['listening_count_more_than_1000' => false], 
+        ['listening_count_more_than_1000' => true], 
+    ));
     }
 }

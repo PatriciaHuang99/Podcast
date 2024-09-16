@@ -15,10 +15,11 @@ class PodcastController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
+    { 
         // Group by popularity, second group is for popular podcasts
         // avoid n+1 issue
-        $podcasts = Podcast::latest()->with(['creator', 'tags'])->get()->groupBy('popular');
+
+        $podcasts = Podcast::latest()->with(['creator', 'tags'])->get()->groupBy('listening_count_more_than_1000');
 
         return view('podcasts.index', [
             'popularPodcasts' => $podcasts[1],

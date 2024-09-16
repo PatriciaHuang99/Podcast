@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('description');
             $table->string('audio_file_path');
             $table->string('episode')->default('1');
-            $table->boolean('popular')->default(false);
+            $table->boolean('listening_count_more_than_1000')->default(false);
             $table->timestamps();
         });
     }
