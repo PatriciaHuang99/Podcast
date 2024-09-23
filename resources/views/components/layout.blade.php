@@ -27,6 +27,7 @@
             @auth
                 <div class="space-x-6 font-bold flex">
                     <a href="/podcasts/create">Post a Podcast</a>
+                    <a href="/mylist">My List</a>
                     <form method="POST" action="/logout">
                         @csrf
                         @method('DELETE')
