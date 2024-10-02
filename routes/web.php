@@ -13,6 +13,9 @@ Route::get('/', [PodcastController::class, 'index']);
 Route::get('/podcasts/create', [PodcastController::class, 'create'])->middleware('auth');
 Route::post('/podcasts', [PodcastController::class, 'store'])->middleware('auth');
 
+Route::get('/podcasts/{id}/edit', [PodcastController::class, 'edit'])->middleware('auth');
+Route::put('/podcasts/{id}/update', [PodcastController::class, 'update'])->middleware('auth');
+
 Route::get('/mylist', ListController::class)->middleware('auth');
 Route::get('/search', SearchController::class);
 Route::get('/tags/{tag:name}', TagController::class);

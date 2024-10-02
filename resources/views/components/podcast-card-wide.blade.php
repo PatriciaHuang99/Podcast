@@ -23,5 +23,7 @@
             @endforeach
         </div>
     </div>
+
+    <a href="{{ url('/podcasts/' . $podcast->id . '/edit') }}">edit</a>
     
 </x-panel>

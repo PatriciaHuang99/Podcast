@@ -17,17 +17,20 @@
                     <img src="{{Vite::asset('resources/images/logo.png')}}" alt="" class="w-32 h-32">
                 </a>
             </div>
-            <div class="space-x-6 font-bold">
-                <a href="">Jobs</a>
-                <a href="">Careers</a>
-                <a href="">Salaries</a>
-                <a href="">Companies</a>
+            <div class="space-x-6 font-bold text-gray-300">
+                <a href="">New Releases</a>
+                <a href="">Popular Podcasts</a>
+                <a href="">Life Stories</a>
+                <a href="">History</a>
+                <a href="">Science</a>
+                <a href="">literature</a>
             </div>
 
             @auth
                 <div class="space-x-6 font-bold flex">
                     <a href="/podcasts/create">Post a Podcast</a>
-                    <a href="/mylist">My List</a>
+                    <a href="/mylist">My Own Podcast</a>
+                    <a href="">My Favourite List</a>
                     <form method="POST" action="/logout">
                         @csrf
                         @method('DELETE')

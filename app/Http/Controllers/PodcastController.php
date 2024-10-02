@@ -72,17 +72,39 @@ class PodcastController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Podcast $podcast)
+    public function edit(string $id)
     {
-        //
+        $podcast = Auth::user()->creator->podcasts()->findOrFail($id);
+
+        return view('podcasts.edit', ['podcast' => $podcast]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePodcastRequest $request, Podcast $podcast)
+    public function update(Request $request, $id)
     {
-        //
+        $podcast = Auth::user()->creator->podcasts()->findOrFail($id);
+
+        $attributes = $request->validate([
+            'title' => ['required'],
+            'description' => ['required'],
+            'episode' => ['required'],
+            'audio_file_path' => ['required', 'url'],
+            'tags' => ['nullable']
+        ]);
+
+        $podcast->update(Arr::except($attributes, 'tags'));
+
+        if ($attributes['tags'] ?? false) {
+            $podcast->tags()->detach();
+
+            foreach (explode(',', $attributes['tags']) as $tag) {
+                $podcast->tag($tag);
+            }
+        }
+
+        return redirect('/')->with('success', 'Podcast updated successfully!');
     }
 
     /**
